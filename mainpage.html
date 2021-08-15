@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Happy Birthday!
+{% endblock %}
+
+{% block body %}
+    <p id = "title">
+        Birthdays
+    </p>
+    
+    <h2>Add a Birthday</h2>
+    
+    <form action="/" method="post">
+        {% for name in ["Name", "Month", "Day"]%}
+            <input autocomplete = "off" autofocus name = "{{name}}" placeholder = "{{name}}" type = "text">
+        {% endfor %}
+        <input type = "submit" value = "Add Birthday" id = "submit">
+    </form>
+
+
+    <h2>All birthdays</h2>
+    <table id>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Birthday</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in rows%}
+            <tr>
+                <td>{{ row.name }}</td>
+                    <td> {{ row.month}}/{{row.day}} </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
